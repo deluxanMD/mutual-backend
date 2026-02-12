@@ -23,20 +23,20 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          cache-dependency-path: server/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: ./server
+        working-directory: ./
         run: npm ci
 
       - name: Run ESLint
-        working-directory: ./server
+        working-directory: ./
         run: npm run lint -- --max-warnings 0
 
       - name: Check Prettier formatting
-        working-directory: ./server
+        working-directory: ./
         run: npm run format:check
 
       - name: Build TypeScript
-        working-directory: ./server
+        working-directory: ./
         run: npm run build
